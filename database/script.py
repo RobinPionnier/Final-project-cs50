@@ -18,11 +18,6 @@ response = requests.get(url)
 genres = response.json()
 genres = genres["genres"]
 
-cursor.execute("DROP TABLE IF EXISTS genres")
-cursor.execute("DROP TABLE IF EXISTS movies")
-cursor.execute("DROP TABLE IF EXISTS movie_genres")
-cursor.execute("DROP TABLE IF EXISTS movie_directors")
-
 #Create the genres table if not exists that link a genre to an id
 cursor.execute("CREATE TABLE IF NOT EXISTS genres (genre_id INT NOT NULL PRIMARY KEY, genre TEXT NOT NULL)")
 
@@ -38,7 +33,7 @@ for genre in genres:
 conn.commit()
 
 #Create the movies table if not exists
-cursor.execute("CREATE TABLE IF NOT EXISTS movies (movie_id INT NOT NULL PRIMARY KEY, title TEXT NOT NULL, overview TEXT NOT NULL, release_date DATE NOT NULL, rating REAL DEFAULT NULL, runtime INTc)")
+cursor.execute("CREATE TABLE IF NOT EXISTS movies (movie_id INT NOT NULL PRIMARY KEY, title TEXT NOT NULL, overview TEXT NOT NULL, release_date DATE NOT NULL, rating REAL DEFAULT NULL, runtime INT, poster_path TEXT)")
 
 #Create the movies-genres table if not exists
 cursor.execute("CREATE TABLE IF NOT EXISTS movie_genres (movie_id INT, genre_id INT, FOREIGN KEY (movie_id) REFERENCES movies(movie_id), FOREIGN KEY (genre_id) REFERENCES genres(genre_id))")
@@ -47,7 +42,7 @@ cursor.execute("CREATE TABLE IF NOT EXISTS movie_genres (movie_id INT, genre_id 
 cursor.execute("CREATE TABLE IF NOT EXISTS movie_directors (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, movie_id INT, director TEXT NOT NULL, FOREIGN KEY (movie_id) REFERENCES movies(movie_id))")
 
 #Initialise the thresholds
-start_year = 1960
+start_year = 1998
 end_year = 2023
 max_page = 2
 
@@ -72,6 +67,7 @@ for year in range(start_year, end_year + 1):
             genre_ids = movie["genre_ids"]
             overview = movie["overview"]
             rating = movie["vote_average"]
+            poster_path = movie["poster_path"]
 
             url_duration = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}"
             response_duration = requests.get(url_duration)
@@ -89,7 +85,7 @@ for year in range(start_year, end_year + 1):
             cursor.execute("SELECT * FROM movies WHERE movie_id = ?", (movie_id,))
             in_table = cursor.fetchone()
             if not in_table: 
-                cursor.execute("INSERT INTO movies (movie_id, title, overview, release_date, rating, runtime) VALUES (?, ?, ?, ?, ?, ?)", (movie_id, title, overview, release_date, rating, runtime))
+                cursor.execute("INSERT INTO movies (movie_id, title, overview, release_date, rating, runtime, poster_path) VALUES (?, ?, ?, ?, ?, ?, ?)", (movie_id, title, overview, release_date, rating, runtime, poster_path))
                 for genre_id in genre_ids:
                     cursor.execute("INSERT INTO movie_genres (movie_id, genre_id) VALUES (?, ?)", (movie_id, genre_id))
                 for director_name in director_names:

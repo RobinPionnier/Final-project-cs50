@@ -18,19 +18,24 @@
         <div class="watchlist-container">
             {% for movie in watchlist %}
             <div class="movie-container">
-                <h3 class="title-directors">
-                    {{ movie["title"] }} - <span class="directors">
-                    {% for director in movie["directors"] %}
-                        <span class="director">{{ director }}</span>    
-                    {% endfor %}
-                </h3>
-                <div class="info">
-                    <p>{{ movie["release_date"] | year }}, {{ movie["runtime"] | convert }}</p>
-                </div>
-                <div class="button-container">
-                    <button class="removeFromWatchlist" data-movie-id="{{ movie['movie_id'] }}">Remove</button>
-                    <button class="addToLiked" data-movie-id="{{ movie['movie_id'] }}">Liked</button>
-                    <button class="addToDisliked" data-movie-id="{{ movie['movie_id'] }}">Disliked</button>
+                <div class="movie">
+                    <img class="poster" src="https://image.tmdb.org/t/p/original/{{ movie['poster_path'] }}"/>
+                    <div class="movie-infos">
+                        <h3 class="title-directors">
+                            {{ movie["title"] }} - <span class="directors">
+                            {% for director in movie["directors"] %}
+                                <span class="director">{{ director }}</span>    
+                            {% endfor %}
+                        </h3>
+                        <div class="info">
+                            <p>{{ movie["release_date"] | year }}, {{ movie["runtime"] | convert }}</p>
+                        </div>
+                        <div class="button-container">
+                            <button class="removeFromWatchlist" data-movie-id="{{ movie['movie_id'] }}">Remove</button>
+                            <button class="addToLiked" data-movie-id="{{ movie['movie_id'] }}">Liked</button>
+                            <button class="addToDisliked" data-movie-id="{{ movie['movie_id'] }}">Disliked</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endfor %}
@@ -42,14 +47,19 @@
         <div class="liked-container">
             {% for movie in liked %}
             <div class="movie-container">
-                <h3 class="title-directors">
-                    {{ movie["title"] }} - <span class="directors">
-                    {% for director in movie["directors"] %}
-                        <span class="director">{{ director }}</span>    
-                    {% endfor %}
-                </h3>
-                <div class="info">
-                    <p>{{ movie["release_date"] | year }}, {{ movie["runtime"] | convert }}</p>
+                <div class="movie">
+                    <img class="poster" src="https://image.tmdb.org/t/p/original/{{ movie['poster_path'] }}"/>
+                    <div class="movie-infos">
+                        <h3 class="title-directors">
+                            {{ movie["title"] }} - <span class="directors">
+                            {% for director in movie["directors"] %}
+                                <span class="director">{{ director }}</span>    
+                            {% endfor %}
+                        </h3>
+                        <div class="info">
+                            <p>{{ movie["release_date"] | year }}, {{ movie["runtime"] | convert }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endfor %}
@@ -60,14 +70,19 @@
         <div class="disliked-container">
             {% for movie in disliked %}
             <div class="movie-container">
-                <h3 class="title-directors">
-                    {{ movie["title"] }} - <span class="directors">
-                    {% for director in movie["directors"] %}
-                        <span class="director">{{ director }}</span>    
-                    {% endfor %}
-                </h3>
-                <div class="info">
-                    <p>{{ movie["release_date"] | year }}, {{ movie["runtime"] | convert }}</p>
+                <div class="movie">
+                    <img class="poster" src="https://image.tmdb.org/t/p/original/{{ movie['poster_path'] }}"/>
+                    <div class="movie-infos">
+                        <h3 class="title-directors">
+                            {{ movie["title"] }} - <span class="directors">
+                            {% for director in movie["directors"] %}
+                                <span class="director">{{ director }}</span>    
+                            {% endfor %}
+                        </h3>
+                        <div class="info">
+                            <p>{{ movie["release_date"] | year }}, {{ movie["runtime"] | convert }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endfor %}

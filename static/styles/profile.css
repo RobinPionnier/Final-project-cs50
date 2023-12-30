@@ -3,15 +3,31 @@ main {
     padding-bottom: 80px;
 }
 
+h2 {
+    font-size: 30px;
+}
+
+img {
+    width: 150px;
+    height: auto;
+}
+
 .movie-container {
-    width: 300px;
-    height: 120px;
-    border: 1px solid #DEDEDE;
+    width: 350px;
+    height: 220px;
     margin: 0;
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px #363636;
+}
+
+.movie {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .watchlist-container, .liked-container, .disliked-container {
