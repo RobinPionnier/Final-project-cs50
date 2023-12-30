@@ -4,7 +4,7 @@
 This Webapp is a bank of movies. I've imported data from The Movie Database (https://www.themoviedb.org). 40 movies per year since 1960, with title, release date, runtime, genres, directors, overview and ratings.
 The goal of this webapp was to look for movies in this imported db, according to certain criteria.
 Each user have its own watchlist, liked list and disliked list.
-#### What did I do this particular project?
+#### Why did I do this particular project?
 I wanted to create a complete project. A webapp seemed to be a good solution because I had to handle Python, HTML, CSS (without bootstrap, I wanted to try vanilla CSS), I wanted, (a bit of) JS and a Database. 
 I love watching movies, so to build a webapp on something I personnally enjoy seemed like a good idea.
 #### What did I learned?
