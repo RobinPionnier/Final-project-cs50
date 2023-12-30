@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="../static/styles/layout.css">
+    {% block style %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="navbar">
+            <a class="navbar-brand" href="/">Popcorn Picks</a>
+            <div class="nav-links">
+                {% if session["user_id"] %}
+                <ul class="nav-list">
+                    <li><a class="nav-link" href="/">Home</a></li>
+                    <li><a class="nav-link" href="/research">Research</a></li>
+                    <li><a class="nav-link" href="/profile">Profile</a></li>
+                </ul>
+                {% endif %}
+                {% if session["user_id"] %}
+                <ul class="nav-list logout">
+                    <li><a class="nav-link" href="/logout">Logout</a></li>
+                </ul>
+                {% else %}
+                <ul class="nav-list login">
+                    <li><a class="nav-link" href="/login">Login</a></li>
+                    <li><a class="nav-link" href="/signup">Sign Up</a></li>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+    </div>
+    <footer>
+        Created by Robin Pionnier. DataBase from <a href="https://www.themoviedb.org/">TMdB</a>
+    </footer>
+</body>
+</html>

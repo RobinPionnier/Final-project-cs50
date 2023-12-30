@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Research
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="../static/styles/research.css">
+{% endblock %}
+
+{% block main %}
+<div class="research-form">
+    <h2>Research</h2>
+    <form action="/research" method="post">
+        <div>
+            <h4>Title</h4>
+            <input class="btn" autocomplete="off" autofocus id="title" name="title" placeholder="Title" type="text">
+        </div>
+        <div>
+            <h4>Director</h4>
+            <input class="btn" autocomplete="off" autofocus id="director" name="director" placeholder="Director" type="text">
+        </div>
+        <div class="year">
+            <h4>Release date</h4>
+            <input class="btn year-btn" autocomplete="off" autofocus id="min-year" name="min-year" placeholder="Min year" type="number">
+            <input class="btn year-btn" autocomplete="off" autofocus id="max-year" name="max-year" placeholder="Max year" type="number">
+        </div>
+        <div class="runtime">
+            <h4>Runtime</h4>
+            <input class="btn runtime-btn" autocomplete="off" autofocus id="min-duration" name="min-duration" placeholder="Min duration" type="number">
+            <input class="btn runtime-btn" autocomplete="off" autofocus id="max-duration" name="max-duration" placeholder="Max duration" type="number">
+        </div>
+        <div class="rating">
+            <h4>Rating</h4>
+            <input class="btn rating-btn" autocomplete="off" autofocus id="min-rating" name="min-rating" placeholder="Min rating" type="number">
+            <input class="btn rating-btn" autocomplete="off" autofocus id="max-rating" name="max-rating" placeholder="Max rating" type="number">
+        </div>
+        <div class="genre">
+            <h4>Genre</h4>
+            <select name="genres" id="genre-select">
+                <option value="">Select an option</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Animation">Animation</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Crime">Crime</option>
+                <option value="Documentary">Documentary</option>
+                <option value="Drama">Drama</option>
+                <option value="Family">Family</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="History">History</option>
+                <option value="Horror">Horror</option>
+                <option value="Music">Music</option>
+                <option value="Mistery">Mistery</option>
+                <option value="Romance">Romance</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="TV movie">TV <movie/option>
+                <option value="Thriller">Thriller</option>
+                <option value="War">War</option>
+                <option value="Western">Western</option>
+              </select>
+        </div>
+        <button class="submit-btn" type="submit">Research</button>
+    </form>
+</div>
+{% endblock %}

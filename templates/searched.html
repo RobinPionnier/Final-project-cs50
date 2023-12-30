@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Research
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="../static/styles/research.css">
+    <link rel="stylesheet" href="../static/styles/searched.css">
+{% endblock %}
+
+{% block main %}
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    {% for movie in movies %}
+    <div class="movie">
+        <p>
+            <span class="title">{{ movie["title"] }}</span></br> <span class="year">{{ movie["release_date"] | year }}</span>, <span class="runtime">{{ movie["runtime"] | convert }}</span></br>Directed by <span class="directors">
+                {% for director in movie["directors"] %}
+                    <span class="director">{{ director }}</span>    
+                {% endfor %}
+            </span></br>
+            Genres: <span class="genres">
+                {% for genre in movie["genres"] %}
+                    <span class="genre">{{ genre }}</span>
+                {% endfor %}
+            </span></br>
+            Rating: <span class="rating">
+                {{ movie["rating"] }}/10
+            </span>
+        </p>
+        <p class="overview">{{ movie["overview"] }}</p>
+        <div class="button-container">
+            <button class="addToWatchlist" data-movie-id="{{ movie['movie_id'] }}">Add to Watchlist</button>
+            <button class="addToLiked" data-movie-id="{{ movie['movie_id'] }}">Liked</button>
+            <button class="addToDisliked" data-movie-id="{{ movie['movie_id'] }}">Disliked</button>
+        </div>
+    </div>
+{% endfor %}
+
+<script>
+    $(document).ready(function() {
+        $(".addToWatchlist").click(function() {
+            var movieId = $(this).data("movie-id");
+
+            // Send an asynchronous request to your server
+            $.ajax({
+                type: "POST",
+                url: "/add_to_watchlist",
+                data: {
+                    movie_id: movieId
+                }
+            });
+        });
+    });
+    $(document).ready(function() {
+        $(".addToLiked").click(function() {
+            var movieId = $(this).data("movie-id");
+
+            // Send an asynchronous request to your server
+            $.ajax({
+                type: "POST",
+                url: "/add_to_liked",
+                data: {
+                    movie_id: movieId
+                }
+            });
+        });
+    });
+    $(document).ready(function() {
+        $(".addToDisliked").click(function() {
+            var movieId = $(this).data("movie-id");
+
+            // Send an asynchronous request to your server
+            $.ajax({
+                type: "POST",
+                url: "/add_to_disliked",
+                data: {
+                    movie_id: movieId
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

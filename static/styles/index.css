@@ -1,0 +1,32 @@
+img {
+    width: 700px;
+    margin: auto;
+    display: block;
+}
+
+p {
+    display: block;
+    text-align: center;
+    margin: 5px;
+    color: #DEDEDE;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 800px) {
+    img {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    img {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    img {
+        width: 400px;
+    }
+}

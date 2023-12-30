@@ -1,0 +1,38 @@
+main {
+    margin: 0 10px;
+    padding-bottom: 80px;
+}
+
+.movie-container {
+    width: 300px;
+    height: 120px;
+    border: 1px solid #DEDEDE;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.watchlist-container, .liked-container, .disliked-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.title-directors {
+    margin:0;
+    padding: 0;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+button:hover {
+    background-color: #121212;
+    color: #DEDEDE;
+}

@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="../static/styles/profile.css">
+{% endblock %}
+
+{% block main %}
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <div class="Watchlist">
+        <h2>Watchlist</h2>
+        
+        <div class="watchlist-container">
+            {% for movie in watchlist %}
+            <div class="movie-container">
+                <h3 class="title-directors">
+                    {{ movie["title"] }} - <span class="directors">
+                    {% for director in movie["directors"] %}
+                        <span class="director">{{ director }}</span>    
+                    {% endfor %}
+                </h3>
+                <div class="info">
+                    <p>{{ movie["release_date"] | year }}, {{ movie["runtime"] | convert }}</p>
+                </div>
+                <div class="button-container">
+                    <button class="removeFromWatchlist" data-movie-id="{{ movie['movie_id'] }}">Remove</button>
+                    <button class="addToLiked" data-movie-id="{{ movie['movie_id'] }}">Liked</button>
+                    <button class="addToDisliked" data-movie-id="{{ movie['movie_id'] }}">Disliked</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+    <div class="Liked">
+        <h2>Liked</h2>
+        <div class="liked-container">
+            {% for movie in liked %}
+            <div class="movie-container">
+                <h3 class="title-directors">
+                    {{ movie["title"] }} - <span class="directors">
+                    {% for director in movie["directors"] %}
+                        <span class="director">{{ director }}</span>    
+                    {% endfor %}
+                </h3>
+                <div class="info">
+                    <p>{{ movie["release_date"] | year }}, {{ movie["runtime"] | convert }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="Disliked">
+        <h2>Disliked</h2>
+        <div class="disliked-container">
+            {% for movie in disliked %}
+            <div class="movie-container">
+                <h3 class="title-directors">
+                    {{ movie["title"] }} - <span class="directors">
+                    {% for director in movie["directors"] %}
+                        <span class="director">{{ director }}</span>    
+                    {% endfor %}
+                </h3>
+                <div class="info">
+                    <p>{{ movie["release_date"] | year }}, {{ movie["runtime"] | convert }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".removeFromWatchlist").click(function() {
+                var movieId = $(this).data("movie-id");
+    
+                // Send an asynchronous request to your server
+                $.ajax({
+                    type: "POST",
+                    url: "/remove_from_watchlist",
+                    data: {
+                        movie_id: movieId
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $(".addToLiked").click(function() {
+                var movieId = $(this).data("movie-id");
+    
+                // Send an asynchronous request to your server
+                $.ajax({
+                    type: "POST",
+                    url: "/add_to_liked",
+                    data: {
+                        movie_id: movieId
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $(".addToDisliked").click(function() {
+                var movieId = $(this).data("movie-id");
+    
+                // Send an asynchronous request to your server
+                $.ajax({
+                    type: "POST",
+                    url: "/add_to_disliked",
+                    data: {
+                        movie_id: movieId
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

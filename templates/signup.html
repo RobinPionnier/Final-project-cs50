@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sign Up
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="../static/styles/login.css">
+{% endblock %}
+
+{% block main %}
+    <div class="signup-form">
+        <h2>Signup</h2>
+        <form action="/signup" method="post">
+            <div>
+                <input class="btn" autocomplete="off" autofocus id="username" name="username" placeholder="Username" type="text">
+                <p class="{{ username }}">You must provide a username</p>
+                <p class="{{ used }}">This username has already been used</p>
+            </div>
+            <div>
+                <input class="btn" id="password" name="password" placeholder="Password" type="password">
+                <input class="btn" id="confirmation" name="confirmation" placeholder="Password" type="password">
+                <p class="{{ password }}">You must provide a password</p>
+                <p class="{{ pw_format }}">Your password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter and 1 number</p>
+                <p class="{{ confirmation }}">Your passwords do not match</p>
+            </div>
+            <button class="submit-btn" type="submit">Signup</button>
+        </form>
+    </div>
+{% endblock %}

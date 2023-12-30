@@ -1,0 +1,60 @@
+body {
+    padding-bottom: 40px;
+}
+
+.research-form {
+    width: 30%;
+    border-radius: 1rem;
+    background-color: #252525;
+    box-shadow: 1px 1px 1px 1px #1D1D1D;
+    margin: auto;
+    margin-top: 25px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 30px;
+    width: 100%;
+}
+
+form div {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 50px;
+    margin: 10px;
+}
+
+h4 {
+    font-size: 22px;
+    margin: 0;
+}
+
+.btn, select {
+    height: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.year-btn, .runtime-btn, .rating-btn {
+    width: 40%;
+    display: inline;
+}
+
+.submit-btn {
+    height: 30px;
+    width: 80%;
+}
+

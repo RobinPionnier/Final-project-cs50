@@ -1,0 +1,56 @@
+.login-form, .signup-form {
+    width: 30%;
+    border-radius: 1rem;
+    background-color: #252525;
+    box-shadow: 1px 1px 1px 1px #1D1D1D;
+    margin: auto;
+    margin-top: 25px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 30px;
+    width: 100%;
+}
+
+form div {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+.btn {
+    height: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    height: 30px;
+    width: 80%;
+}
+
+.correct {
+    display: none;
+}
+
+.incorrect {
+    font-size: 18px;
+    color: red;
+    text-align: left;
+    width: 100%;
+}
+
